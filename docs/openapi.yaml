@@ -233,7 +233,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               example:
-                error: Admin access required
+                error: "Forbidden: insufficient permission"
         '409':
           description: Game title already exists
           content:
@@ -334,7 +334,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ErrorResponse'
             example:
-              error: Admin access required
+              error: "Forbidden: insufficient permission"
 
       '404':
         description: Game not found
@@ -392,7 +392,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ErrorResponse'
             example:
-              error: Admin access required
+              error: "Forbidden: insufficient permission"
 
       '404':
         description: Game not found
@@ -559,7 +559,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               example:
-                error: Insufficient Permissions
+                error: "You do not have permission to perform this action"
 
         '404':
           description: Review not found
@@ -609,7 +609,7 @@ paths:
                 schema:
                   $ref: '#/components/schemas/ErrorResponse'
                 example:
-                  error: Insufficient Permissions
+                  error: "You do not have permission to perform this action"
 
           '404':
             description: Review not found
@@ -765,7 +765,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               example:
-                error: Insufficient Permissions
+                error: "You do not have permission to perform this action"
 
         '404':
           description: Comment not found
@@ -813,16 +813,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               example:
-                error: Insufficient Permissions
+                error: "You do not have permission to perform this action"
 
-  '404':
-    description: Comment not found
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/ErrorResponse'
-        example:
-          error: Comment not found
+        '404':
+          description: Comment not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Comment not found
 
 components:
   securitySchemes:
