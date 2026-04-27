@@ -308,51 +308,51 @@ paths:
                   $ref: '#/components/schemas/Game'
 
 
-      '400':
-        description: Validation error
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ErrorResponse'
-            example:
-              errors:
-                - Title must be at least 5 characters
+          '400':
+            description: Validation error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+                example:
+                  errors:
+                    - Title must be at least 5 characters
 
-      '401':
-        description: Unauthorized
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ErrorResponse'
-            example:
-              error: Authentication required
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+                example:
+                  error: Authentication required
 
-      '403':
-        description: Admin access required
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ErrorResponse'
-            example:
-              error: "Forbidden: insufficient permission"
+          '403':
+            description: Admin access required
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+                example:
+                  error: "Forbidden: insufficient permission"
 
-      '404':
-        description: Game not found
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ErrorResponse'
-            example:
-              error: Game not found
+          '404':
+            description: Game not found
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+                example:
+                  error: Game not found
 
-      '409':
-        description: Game title already exists
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ErrorResponse'
-            example:
-              error: Game title already exists
+          '409':
+            description: Game title already exists
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+                example:
+                  error: Game title already exists
 
     delete:
       summary: Delete a game by ID
@@ -366,42 +366,42 @@ paths:
         '204':
           description: Game deleted successfully
 
-      '400':
-        description: Invalid ID
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ErrorResponse'
-            example:
-              errors:
-                - ID must be a positive integer
-
-      '401':
-        description: Unauthorized
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ErrorResponse'
-            example:
-              error: Authentication required
-
-      '403':
-        description: Admin access required
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ErrorResponse'
-            example:
-              error: "Forbidden: insufficient permission"
-
-      '404':
-        description: Game not found
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ErrorResponse'
-            example:
-              error: Game not found
+        '400':
+          description: Invalid ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errors:
+                  - ID must be a positive integer
+  
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Authentication required
+  
+        '403':
+          description: Admin access required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "Forbidden: insufficient permission"
+  
+        '404':
+          description: Game not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Game not found
 
   
   /reviews:
@@ -584,41 +584,41 @@ paths:
         '204':
           description: Review deleted successfully
         '400':
-            description: Invalid ID
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-                example:
-                  errors:
-                    - ID must be a positive integer
+          description: Invalid ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errors:
+                  - ID must be a positive integer
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Authentication required
 
-          '401':
-            description: Unauthorized
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-                example:
-                  error: Authentication required
+        '403':
+          description: Insufficient Permissions to delete this review
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "You do not have permission to perform this action"
 
-          '403':
-            description: Insufficient Permissions to delete this review
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-                example:
-                  error: "You do not have permission to perform this action"
-
-          '404':
-            description: Review not found
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-                example:
-                  error: Review not found
+        '404':
+          description: Review not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Review not found
+         
   
   /comments:
     get:
@@ -656,33 +656,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/Comment'
         '400':
-            description: Validation error
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-                example:
-                  errors:
-                    - Content is required
-                    - Review ID is required
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errors:
+                  - Content is required
+                  - Review ID is required
 
-          '401':
-            description: Unauthorized
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-                example:
-                  error: Authentication required
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Authentication required
 
-          '404':
-            description: Review not found
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-                example:
-                  error: Review not found
+        '404':
+          description: Review not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Review not found
 
   /comments/{id}:
     get:
@@ -698,23 +698,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/Comment'
         '400':
-            description: Invalid ID
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-                example:
-                  errors:
-                    - ID must be a positive integer
+          description: Invalid ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errors:
+                  - ID must be a positive integer
 
-          '404':
-            description: Comment not found
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/ErrorResponse'
-                example:
-                  error: Comment not found
+        '404':
+          description: Comment not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Comment not found
 
     put:
       summary: Update a comment by ID

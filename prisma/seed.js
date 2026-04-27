@@ -2,8 +2,25 @@ import bcrypt from 'bcrypt';
 import 'dotenv/config';
 import prisma from '../src/config/db.js';
 
+const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+
+
 try {
-  await prisma.$queryRaw`TRUNCATE comments, reviews, games, users RESTART IDENTITY CASCADE;`;
+
+  if (isDev) {
+    await prisma.$queryRaw`TRUNCATE comments, reviews, games, users RESTART IDENTITY CASCADE;`;
+    console.log('Development: comments, reviews, games, users tables have been truncated');
+  }
+
+  if (!isDev){
+    const userCount = await prisma.user.count();
+
+    if (userCount > 0) {
+      console.log('Production: seed already appears to have run. Skipping.');
+      await prisma.$disconnect();
+      process.exit(0);
+    }
+  }
 
   const usersData = [
     { email: 'jane@test.com', password: 'jane1234' },
