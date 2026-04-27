@@ -8,6 +8,8 @@ info:
 servers:
   - url: http://localhost:3000/api
     description: Local development server
+  - url: https://finalproject4166-gamelibraryapi-cory.onrender.com
+    description: Production server
 
 tags:
   - name: Authentication
