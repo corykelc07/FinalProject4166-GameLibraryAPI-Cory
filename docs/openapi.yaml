@@ -899,7 +899,7 @@ components:
     AuthResponse:
       type: object
       properties:
-        token:
+        accessToken:
           type: string
           description: JWT used for authenticated requests
           example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
