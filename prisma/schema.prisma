@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Comment {
+  id Int @id @default(autoincrement())
+
+  content String
+  createdAt DateTime @default(now()) @map("created_at")
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  review Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  authorId Int @map("user_id")
+  reviewId Int @map("review_id")
+  @@map("comments")
+}
+
+model Game {
+  id Int @id @default(autoincrement())
+  title String @unique
+  genre String
+  releaseDate DateTime @map("release_date")
+  developer String
+  reviews Review[]
+  @@map("games")
+}
+
+model Review {
+  id Int @id @default(autoincrement())
+  title String 
+  content String
+  rating Int
+  createdAt DateTime @default(now()) @map("created_at")
+
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  game Game @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  authorId Int @map("user_id")
+  gameId Int @map("game_id")
+
+  comments Comment[]
+  @@map("reviews")
+}
+
+model User {
+  id  Int @id @default(autoincrement())
+  email String @unique
+  password String
+  role Role @default(USER)
+  reviews Review[]
+  comments Comment[]
+  @@map("users")
+}
+
+
+enum Role {
+  USER
+  ADMIN
+}
