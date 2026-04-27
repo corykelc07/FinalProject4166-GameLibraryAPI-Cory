@@ -30,6 +30,10 @@ app.use('/api/games', gameRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/comments', commentRoutes);
 
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 
 
 app.use((req, res, next) => {
